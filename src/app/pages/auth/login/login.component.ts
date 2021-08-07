@@ -1,3 +1,4 @@
+import  Swal  from 'sweetalert2';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -42,10 +43,28 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.baseForm.invalid) {
       return;
     }
-
     const formValue = this.loginForm.baseForm.value;
+    let timerInterval
+    Swal.fire({
+      title: 'อยู่ในระหว่างดำเนินการ !',
+      // html: 'I will close in <b></b> milliseconds.',
+      // timer: 5000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b: any = Swal.getHtmlContainer().querySelector('b')
+        // timerInterval = setInterval(() => {
+        //   b.textContent = Swal.getTimerLeft()
+        // }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    })
+
     this.subscription.add(
       this.authSvc.login(formValue).subscribe((res) => {
+        Swal.close();
         if (res) {
           this.router.navigate(['/']);
         }

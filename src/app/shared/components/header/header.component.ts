@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 
 import { UserResponse } from './../../models/user.interface';
 
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAdmin = null;
   isLogged = true;
 
+
   public ProfileName: string;
   public ProfileDepName: string;
 
@@ -33,7 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private authSvc: AuthService,
-   
+    private router: Router,
+
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +61,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout(): void {
     this.authSvc.logout();
+    // this.router.navigate(['/login']);
   }
 
 }
