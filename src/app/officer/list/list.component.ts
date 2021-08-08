@@ -70,7 +70,7 @@ export class ListComponent implements OnInit {
         dataTablesParameters['status'] = 'Yes'
         that.officerServ.getAll(dataTablesParameters).subscribe((resp) => {
           that.dataRow = resp.data.data;
-          console.log('test', that.dataRow);
+          //console.log('test', that.dataRow);
 
           callback({
             recordsTotal: resp.data.total,
