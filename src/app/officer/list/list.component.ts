@@ -97,7 +97,7 @@ export class ListComponent implements OnInit {
   }
 
   onEdit(data): void {
-    console.log(data);
+    //console.log(data);
     // return false
     const navigationExtras: NavigationExtras = {
       state: {

@@ -38,7 +38,7 @@ export class EditComponent implements OnInit {
     public officerForm: BaseFormOfficer,
     public activatedRoute: ActivatedRoute
   ) {
-    console.log('extras', this.router.getCurrentNavigation().extras.state.item);
+    //console.log('extras', this.router.getCurrentNavigation().extras.state.item);
     this.officerForm.baseForm.patchValue(this.router.getCurrentNavigation().extras.state.item);
     this.getProvince();
     setTimeout(() => {
